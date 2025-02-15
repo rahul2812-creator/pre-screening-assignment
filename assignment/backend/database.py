@@ -1,8 +1,14 @@
-import os
 import psycopg2
-from psycopg2 import sql
+import os
 
-DATABASE_URL = os.getenv('# put your databse URL over here to communicate with the Database')
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:rahul123@db:5432/database")
 
 def get_db_connection():
-    return psycopg2.connect(DATABASE_URL)
+    return psycopg2.connect(
+        dbname="database",
+        user="postgres",
+        password="rahul123",
+        host="db",
+        port="5432"
+    )
+
